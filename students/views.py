@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Student
 from .forms import CreateStudentForm
@@ -33,7 +33,11 @@ def GetStudent(request, **kwargs):
     return render(request, 'std_detail.html', context )
 
 
-
+def DeleteStudent(request, **kwargs):
+    reg = kwargs.get('reg')
+    student = Student.objects.get(reg_no=reg)
+    student.delete()
+    return redirect('home')
 
 
 
