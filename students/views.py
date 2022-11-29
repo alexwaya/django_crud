@@ -15,7 +15,7 @@ def CreateStudent(request):
 
     students = Student.objects.all().order_by("-id")
     context = {'form':form, 'students':students}
-    return render(request, 'home.html', context)
+    return render(request, 'index.html', context)
 
 
 def GetStudent(request, **kwargs):
